@@ -11,6 +11,7 @@ from .markdown import MarkdownTemplate
 from .misaka import MarkdownMisakaTemplate
 from .django import DjangoTemplate
 from .genshi import GenshiMarkupTemplate, GenshiTextTemplate
+from .cheetah import CheetahTemplate
 
 
 # Import the registry class.
@@ -36,4 +37,5 @@ Shift.register_class(MarkdownTemplate, 'md')
 Shift.register_class(DjangoTemplate, 'django')
 Shift.register_class(GenshiMarkupTemplate, 'markup.genshi')
 Shift.register_class(GenshiTextTemplate, 'text.genshi')
+Shift.register_class(CheetahTemplate, 'cheetah')
 
