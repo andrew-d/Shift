@@ -7,6 +7,7 @@ from .scss import ScssTemplate
 from .coffeescript import CoffeeScriptTemplate
 from .lessc import LessCSSTemplate
 from .mako import MakoTemplate
+from .markdown import MarkdownTemplate
 
 
 # Import the registry class.
@@ -22,4 +23,6 @@ Shift.register_class(CoffeeScriptTemplate, 'coffee')
 Shift.register_class(CoffeeScriptTemplate, 'coffeescript')
 Shift.register_class(LessCSSTemplate, 'less')
 Shift.register_class(MakoTemplate, 'mako')
+Shift.register_class(MarkdownTemplate, 'markdown')
+Shift.register_class(MarkdownTemplate, 'md')
 
