@@ -10,6 +10,7 @@ from .mako import MakoTemplate
 from .markdown import MarkdownTemplate
 from .misaka import MarkdownMisakaTemplate
 from .django import DjangoTemplate
+from .genshi import GenshiMarkupTemplate, GenshiTextTemplate
 
 
 # Import the registry class.
@@ -33,4 +34,6 @@ Shift.register_class(MarkdownMisakaTemplate, 'md')
 Shift.register_class(MarkdownTemplate, 'markdown')
 Shift.register_class(MarkdownTemplate, 'md')
 Shift.register_class(DjangoTemplate, 'django')
+Shift.register_class(GenshiMarkupTemplate, 'markup.genshi')
+Shift.register_class(GenshiTextTemplate, 'text.genshi')
 
