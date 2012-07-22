@@ -9,6 +9,7 @@ from .lessc import LessCSSTemplate
 from .mako import MakoTemplate
 from .markdown import MarkdownTemplate
 from .misaka import MarkdownMisakaTemplate
+from .django import DjangoTemplate
 
 
 # Import the registry class.
@@ -31,4 +32,5 @@ Shift.register_class(MarkdownMisakaTemplate, 'markdown')
 Shift.register_class(MarkdownMisakaTemplate, 'md')
 Shift.register_class(MarkdownTemplate, 'markdown')
 Shift.register_class(MarkdownTemplate, 'md')
+Shift.register_class(DjangoTemplate, 'django')
 
