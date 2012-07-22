@@ -8,7 +8,7 @@ class LessCSSTemplate(BaseTemplate):
     @classmethod
     def on_initialize(klass):
         try:
-            import lesscss
+            import lesscss.lessc
         except ImportError:
             return False
 
