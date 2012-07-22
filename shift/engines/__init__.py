@@ -19,6 +19,7 @@ from ..base import Shift
 # in which template engines are tried (first to last).
 Shift.register_class(BareTemplate, 'bare')
 Shift.register_class(JinjaTemplate, 'jinja2')
+Shift.register_class(JinjaTemplate, 'j2')
 Shift.register_class(MustacheTemplate, 'mustache')
 Shift.register_class(ScssTemplate, 'scss')
 Shift.register_class(ScssTemplate, 'sass')
