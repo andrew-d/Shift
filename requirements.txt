@@ -12,4 +12,5 @@ misaka                  # Markdown - using C extension (http://misaka.61924.nl/)
 pystache                # Mustache (https://github.com/defunkt/pystache/)
 docutils                # reStructuredText (http://docutils.sourceforge.net/rst.html)
 pyScss                  # Sass/SCSS (https://github.com/Kronuz/pyScss/)
+-e git://github.com/sebix/python-textile.git#egg=python-textile # Textile
 

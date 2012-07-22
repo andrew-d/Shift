@@ -15,6 +15,7 @@ from .cheetah import CheetahTemplate
 from .chameleon import ChameleonTemplate
 from .creole import CreoleTemplate
 from .restructuredtext import ReStructuredTextTemplate
+from .textile import TextileTemplate
 
 
 # Import the registry class.
@@ -45,4 +46,5 @@ Shift.register_class(ChameleonTemplate, 'chameleon')
 Shift.register_class(ChameleonTemplate, 'pt')
 Shift.register_class(CreoleTemplate, 'creole')
 Shift.register_class(ReStructuredTextTemplate, 'rst')
+Shift.register_class(TextileTemplate, 'textile')
 
