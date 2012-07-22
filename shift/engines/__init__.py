@@ -5,6 +5,7 @@ from .jinja2 import JinjaTemplate
 from .mustache import MustacheTemplate
 from .scss import ScssTemplate
 from .coffeescript import CoffeeScriptTemplate
+from .lessc import LessCSSTemplate
 
 
 # Import the registry class.
@@ -18,4 +19,5 @@ Shift.register_class(ScssTemplate, 'scss')
 Shift.register_class(ScssTemplate, 'sass')
 Shift.register_class(CoffeeScriptTemplate, 'coffee')
 Shift.register_class(CoffeeScriptTemplate, 'coffeescript')
+Shift.register_class(LessCSSTemplate, 'less')
 
