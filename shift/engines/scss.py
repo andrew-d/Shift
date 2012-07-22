@@ -4,7 +4,7 @@ from ..base import Shift, BaseTemplate
 
 class ScssTemplate(BaseTemplate):
     def on_render(self, template, context):
-        return renderer.compile(template)
+        return self.renderer.compile(template)
 
     @classmethod
     def on_initialize(klass):
