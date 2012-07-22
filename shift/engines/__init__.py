@@ -8,7 +8,7 @@ from .coffeescript import CoffeeScriptTemplate
 from .lessc import LessCSSTemplate
 from .mako import MakoTemplate
 from .markdown import MarkdownTemplate
-from .misaka import MarkdownMisakaTemplate
+from .markdown_misaka import MarkdownMisakaTemplate
 from .django import DjangoTemplate
 from .genshi import GenshiMarkupTemplate, GenshiTextTemplate
 from .cheetah import CheetahTemplate
