@@ -14,6 +14,7 @@ from .genshi import GenshiMarkupTemplate, GenshiTextTemplate
 from .cheetah import CheetahTemplate
 from .chameleon import ChameleonTemplate
 from .creole import CreoleTemplate
+from .restructuredtext import ReStructuredTextTemplate
 
 
 # Import the registry class.
@@ -43,4 +44,5 @@ Shift.register_class(CheetahTemplate, 'cheetah')
 Shift.register_class(ChameleonTemplate, 'chameleon')
 Shift.register_class(ChameleonTemplate, 'pt')
 Shift.register_class(CreoleTemplate, 'creole')
+Shift.register_class(ReStructuredTextTemplate, 'rst')
 
