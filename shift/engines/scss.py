@@ -4,8 +4,11 @@ import sys
 import StringIO
 
 class ScssTemplate(BaseTemplate):
-    def on_render(self, template, context):
-        return self.renderer.compile(template)
+    def load_string(self, template):
+        self.string = template
+
+    def render(self, context=None):
+        return self.renderer.compile(self.string)
 
     @classmethod
     def on_initialize(klass):
