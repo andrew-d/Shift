@@ -9,6 +9,9 @@ class BareTemplate(BaseTemplate):
     def on_initialize(klass):
         return True
 
-    def on_render(self, template, context):
-        return template
+    def load_string(self, template):
+        self.string = template
+
+    def render(self, context=None):
+        return self.string
 
