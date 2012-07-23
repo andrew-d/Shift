@@ -16,3 +16,10 @@ Future plans for template loading:
  - Should look into whether it's worth it to seperate the logic for rendering from a file and rendering from a string.  Might be worth offering two hooks (on_render_file and on_render, and have the on_render_file hook default to simply reading the file path and then calling the on_render hook with the result).
  - Need to be sure that this is still easy to use!
 
+
+ - New-ish plan:
+    - Seperate loading the template from rendering it.  Specifically make initializing a template class be the 'load' operation, and the render() method actually render the template.
+    - This lets us nicely seperate the 'how do we find the file/pass the file path to a loader' from 'how do we turn a template into a string'
+    - Shift.new() will effectively dynamically pick a template class and then call TemplateClass.new(file_path, root_path)
+    - Template classes should accept either as None.  This is handy for when we're, e.g. rendering Markdown from a string.
+
