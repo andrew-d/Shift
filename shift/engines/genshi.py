@@ -2,25 +2,36 @@ from __future__ import absolute_import
 from ..base import Shift, BaseTemplate
 
 class GenshiMarkupTemplate(BaseTemplate):
-    def on_render(self, template, context):
-        renderer = klass.renderer(template)
-        return renderer.generate(**context)
+    def load_string(self, template):
+        self.renderer = self.MarkupTemplate(template)
+
+    def load_file(self, file_path, root_dir=None):
+        path = root_dir or '.'
+        self.loader = self.Loader([path])
+        self.renderer = self.loader.load(file_path)
+
+    def render(self, context=None):
+        return self.renderer.generate(**context)
 
     @classmethod
     def on_initialize(klass):
         try:
             import genshi.template.markup
+            import genshi.template.loader
         except ImportError:
             return False
 
-        klass.renderer = genshi.template.markup.MarkupTemplate
+        klass.Loader = genshi.template.loader.TemplateLoader
+        klass.MarkupTemplate = genshi.template.markup.MarkupTemplate
         return True
 
 
 class GenshiTextTemplate(BaseTemplate):
-    def on_render(self, template, context):
-        renderer = klass.renderer(template)
-        return renderer.generate(**context)
+    def load_string(self, template):
+        self.renderer = klass.Template(template)
+
+    def render(self, context=None):
+        return self.renderer.generate(**context)
 
     @classmethod
     def on_initialize(klass):
@@ -29,6 +40,6 @@ class GenshiTextTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = genshi.template.text.NewTextTemplate
+        klass.Template = genshi.template.text.NewTextTemplate
         return True
 
