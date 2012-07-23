@@ -10,7 +10,8 @@ class ChameleonTemplate(BaseTemplate):
         self.renderer = self.loader[file_path]
 
     def render(self, context=None):
-        return self.renderer(**context)
+        ctx = context or {}
+        return self.renderer(**ctx)
 
     @classmethod
     def on_initialize(klass):

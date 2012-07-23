@@ -11,7 +11,8 @@ class GenshiMarkupTemplate(BaseTemplate):
         self.renderer = self.loader.load(file_path)
 
     def render(self, context=None):
-        return self.renderer.generate(**context)
+        ctx = context or {}
+        return self.renderer.generate(**ctx)
 
     @classmethod
     def on_initialize(klass):
@@ -31,7 +32,8 @@ class GenshiTextTemplate(BaseTemplate):
         self.renderer = klass.Template(template)
 
     def render(self, context=None):
-        return self.renderer.generate(**context)
+        ctx = context or {}
+        return self.renderer.generate(**ctx)
 
     @classmethod
     def on_initialize(klass):
