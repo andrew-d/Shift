@@ -2,9 +2,15 @@ from __future__ import absolute_import
 from ..base import Shift, BaseTemplate
 
 class ChameleonTemplate(BaseTemplate):
-    def on_render(self, template, context):
-        renderer = self.Template(template)
-        return renderer(**context)
+    def load_string(self, template):
+        self.renderer = self.Template(template)
+
+    def load_file(self, file_path, root_dir=None):
+        self.loader = self.PageTemplateLoader(root_dir)
+        self.renderer = self.loader[file_path]
+
+    def render(self, context=None):
+        return self.renderer(**context)
 
     @classmethod
     def on_initialize(klass):
@@ -13,6 +19,7 @@ class ChameleonTemplate(BaseTemplate):
         except ImportError:
             return False
 
+        klass.PageTemplateLoader = chameleon.PageTemplateLoader
         klass.Template = chameleon.PageTemplate
         return True
 
