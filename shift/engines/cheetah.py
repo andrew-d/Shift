@@ -2,8 +2,11 @@ from __future__ import absolute_import
 from ..base import Shift, BaseTemplate
 
 class CheetahTemplate(BaseTemplate):
-    def on_render(self, template, context):
-        renderer = self.Template(template, searchList=[context])
+    def load_string(self, template):
+        self.string = template
+
+    def render(self, context=None):
+        renderer = self.Template(self.string, searchList=[context])
         return str(renderer)
 
     @classmethod
