@@ -4,6 +4,7 @@ import os
 import re
 import abc
 from collections import defaultdict
+from copy import copy
 
 
 class Shift(object):
@@ -14,6 +15,7 @@ class Shift(object):
     mappings = defaultdict(list)
 
     def __init__(self, template_root="views"):
+        self.mappings = copy(Shift.mappings)
         self.template_root = os.path.abspath(template_root)
 
     def new(template_path):
@@ -41,19 +43,27 @@ class Shift(object):
         klass.initialize()
         Shift.mappings[mapping].append(klass)
 
+    def register_on_instance(self, klass, mapping):
+        assert issubclass(klass, BaseTemplate)
+        klass.initialize()
+        self.mappings[mapping].append(klass)
+
     def _engines_iterator(self, path):
+        for path in self._paths_iterator(path):
+            if path in self.mappings:
+                for engine in self.mappings[path]:
+                    yield engine
+
+    def _paths_iterator(self, path):
         """
         Find the best match for the given path.  Returns the mapping.
-        TODO: this shoud be an iterator
         """
         while True:
             # Error if the path is empty.
             if len(path) == 0:
                 break
 
-            if path in Shift.mappings:
-                for engine in Shift.mappings[path]:
-                    yield engine
+            yield path
 
             # Strip one segment from the path and try again.
             base_path = os.path.basename(path)
@@ -117,7 +127,7 @@ class BaseTemplate(object):
         raise NotImplementedError("render() is not implemented in the base template")
 
     @classmethod
-    def on_initialize():
+    def on_initialize(self):
         """
         This function is called exactly once for each template class.  It
         should perform any initialization steps that are required to set
