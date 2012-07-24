@@ -21,7 +21,7 @@ def suite():
     suite = unittest.TestSuite()
     suite.addTest(suite_1())
 
-    from .engines import suite as engines_suite
+    from .test_engines import suite as engines_suite
     suite.addTest(engines_suite())
 
     return suite

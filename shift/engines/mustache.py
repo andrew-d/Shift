@@ -16,6 +16,6 @@ class MustacheTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass._render = pystache.render
+        klass._render = staticmethod(pystache.render)
         return True
 

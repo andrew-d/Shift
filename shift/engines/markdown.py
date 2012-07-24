@@ -15,6 +15,6 @@ class MarkdownTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = markdown.markdown
+        klass.renderer = staticmethod(markdown.markdown)
         return True
 

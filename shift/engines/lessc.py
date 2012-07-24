@@ -15,6 +15,6 @@ class LessCSSTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = lesscss.lessc.compile
+        klass.renderer = staticmethod(lesscss.lessc.compile)
         return True
 

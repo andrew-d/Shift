@@ -15,6 +15,6 @@ class CreoleTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = creole.creole2html
+        klass.renderer = staticmethod(creole.creole2html)
         return True
 

@@ -15,6 +15,6 @@ class MarkdownMisakaTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = misaka.html
+        klass.renderer = staticmethod(misaka.html)
         return True
 

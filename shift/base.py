@@ -18,18 +18,15 @@ class Shift(object):
         self.mappings = copy(Shift.mappings)
         self.template_root = os.path.abspath(template_root)
 
-    def new(template_path):
+    def new(self, template_path):
         for engine in self._engines_iterator(template_path):
             if engine.initialized:
                 # We try to instantiate this renderer.  If an error is raised, we
                 # catch it and try the next engine.
                 # TODO: is it really a smart idea to try and catch ALL exceptions
                 # here?  Perhaps not.
-                try:
-                    renderer = engine(template_path=template_path, root_dir=self.template_root)
-                    return renderer
-                except Exception:
-                    pass
+                renderer = engine(template_path=template_path, root_dir=self.template_root)
+                return renderer
             else:
                 # print "Engine {0} isn't initialized.".format(engine)
                 pass
@@ -116,7 +113,7 @@ class BaseTemplate(object):
             path = file_path
 
         with open(path, 'rb') as f:
-            return load_string(f.read(), *args, **kwargs)
+            return self.load_string(f.read(), *args, **kwargs)
 
     def render(self, context=None, *args, **kwargs):
         """
