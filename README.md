@@ -1,6 +1,8 @@
 Shift
 =====
 
+[![Build Status](https://secure.travis-ci.org/andrew-d/Shift.png?branch=master)](http://travis-ci.org/andrew-d/Shift)
+
 A generic template library for Python.
 
 
