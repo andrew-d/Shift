@@ -18,12 +18,13 @@ class DjangoTemplate(BaseTemplate):
     def on_initialize(klass):
         try:
             import django.template
+            import django.template.loader
             from django.conf import settings
         except ImportError:
             return False
 
         klass.settings = settings
-        klass.get_template = django.template.loader.get_template
+        klass.get_template = staticmethod(django.template.loader.get_template)
         klass.Template = django.template.Template
         klass.Context = django.template.Context
         return True
