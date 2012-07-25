@@ -13,7 +13,6 @@ Jinja2                  # Jinja2 (http://jinja.pocoo.org/)
 -e git://github.com/metalshark/lesscss-python.git#egg=lesscss-python # LessCSS
 Mako                    # Mako (http://www.makotemplates.org/)
 Markdown                # Markdown (http://packages.python.org/Markdown/)
-misaka                  # Markdown - using C extension (http://misaka.61924.nl/)
 pystache                # Mustache (https://github.com/defunkt/pystache/)
 docutils                # reStructuredText (http://docutils.sourceforge.net/rst.html)
 pyScss                  # Sass/SCSS (https://github.com/Kronuz/pyScss/)
