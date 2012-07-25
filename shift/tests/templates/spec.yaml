@@ -19,3 +19,24 @@ template_file: pystache.mustache
 output_file: pystache.mustache.out
 params:
     name: Andrew
+---
+engine_name: chameleon
+test_name: chameleon_basic
+template_file: chameleon.chameleon
+output_file: chameleon.chameleon.out
+params:
+    name: Andrew
+---
+engine_name: cheetah
+test_name: cheetah_basic
+template_file: cheetah.cheetah
+output_file: cheetah.cheetah.out
+params:
+    name: Andrew
+---
+engine_name: jinja2
+test_name: jinja2_inheritance
+template_file: jinja2_child.j2
+output_file: jinja2_inheritance.out
+params:
+    name: Andrew
