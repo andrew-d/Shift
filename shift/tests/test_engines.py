@@ -1,8 +1,12 @@
 from . import BaseTestCase, parameters, parametrize, shift
 import os
+import sys
 from glob import glob
 import unittest
 import yaml
+
+def is_pypy():
+    return hasattr(sys, 'pypy_version_info')
 
 file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
 test_spec = os.path.join(file_path, "spec.yaml")
@@ -22,6 +26,13 @@ class TestTemplates(BaseTestCase):
         # print "Template file: {0}".format(details['template_file'])
         # print "Output file  : {0}".format(details['output_file'])
         # print "Engine name  : {0}".format(details['engine_name'])
+
+        # We special-case skip Cheetah on PyPy since it doesn't handle
+        # the template engine properly.
+        if is_pypy() and details['engine_name'] == 'cheetah':
+            return
+
+
         template = self.shift.new(details['template_file'])
         self.assert_true(template is not None)
 
