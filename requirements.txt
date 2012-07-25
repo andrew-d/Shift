@@ -1,3 +1,8 @@
+# Testing helpers.
+PyYAML                  # For the test's spec.yaml
+
+
+# Following are the template engines that are required for testing.
 Chameleon               # Chameleon (http://chameleon.repoze.org/)
 Cheetah                 # Cheetah (http://www.cheetahtemplate.org/)
 CoffeeScript            # CoffeeScript (https://github.com/doloopwhile/Python-CoffeeScript/)
