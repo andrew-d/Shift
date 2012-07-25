@@ -6,7 +6,8 @@ python:
   - "pypy"
 
 install:
-  - install-dependencies.sh
+  - pip install -r requirements.txt --use-mirrors
+  - if [ "$TRAVIS_PYTHON_VERSION" != "pypy" ]; then pip install -r cpython_requirements.txt --use-mirrors; fi
 
 script: python setup.py test
 
