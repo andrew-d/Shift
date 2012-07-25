@@ -47,6 +47,7 @@ Shift.register_class(CheetahTemplate, 'cheetah')
 Shift.register_class(ChameleonTemplate, 'chameleon')
 Shift.register_class(ChameleonTemplate, 'pt')
 Shift.register_class(CreoleTemplate, 'creole')
+Shift.register_class(CreoleTemplate, 'wiki')
 Shift.register_class(ReStructuredTextTemplate, 'rst')
 Shift.register_class(TextileTemplate, 'textile')
 
