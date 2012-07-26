@@ -33,3 +33,10 @@ template_file: jinja2_child.j2
 output_file: jinja2_inheritance.out
 params:
     name: Andrew
+---
+engine_name: django
+test_name: django_basic
+template_file: django_basic.django
+output_file: django_basic.django.out
+params:
+    name: Andrew
