@@ -6,7 +6,11 @@ class ReStructuredTextTemplate(BaseTemplate):
         self.string = template
 
     def render(self, context=None):
-        return self.renderer(source=self.string, writer_name='html4css1')
+        parts = self.renderer(source=self.string, writer_name='html4css1')
+        if 'html_body' in parts:
+            return parts['html_body']
+        else:
+            return None
 
     @classmethod
     def on_initialize(klass):
@@ -15,6 +19,6 @@ class ReStructuredTextTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = docutils.core.publish_parts
+        klass.renderer = staticmethod(docutils.core.publish_parts)
         return True
 

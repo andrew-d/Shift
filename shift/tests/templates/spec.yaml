@@ -40,3 +40,8 @@ template_file: django_basic.django
 output_file: django_basic.django.out
 params:
     name: Andrew
+---
+engine_name: restructuredtext
+test_name: restructuredtext
+template_file: restructured.rst
+output_file: restructured.rst.out
