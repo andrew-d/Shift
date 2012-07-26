@@ -39,6 +39,9 @@ class TestTemplates(BaseTestCase):
 
         self.assert_equal(rendered, expected)
 
+        # We also test that this test will fail as expected.
+        self.assert_not_equal(rendered + "BREAK", expected)
+
 
 class TestSpecificEngines(BaseTestCase):
     def setup(self):
