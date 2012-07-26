@@ -1,4 +1,5 @@
 from . import BaseTestCase, parameters, parametrize, shift
+from .helpers import skip_if
 import os
 import sys
 from glob import glob
@@ -27,12 +28,6 @@ class TestTemplates(BaseTestCase):
         # print "Output file  : {0}".format(details['output_file'])
         # print "Engine name  : {0}".format(details['engine_name'])
 
-        # We special-case skip Cheetah on PyPy since it doesn't handle
-        # the template engine properly.
-        if is_pypy() and details['engine_name'] == 'cheetah':
-            return
-
-
         template = self.shift.new(details['template_file'])
         self.assert_true(template is not None)
 
@@ -45,9 +40,28 @@ class TestTemplates(BaseTestCase):
         self.assert_equal(rendered, expected)
 
 
+class TestSpecificEngines(BaseTestCase):
+    def setup(self):
+        self.shift = shift.Shift(template_root=file_path)
+
+    @skip_if(is_pypy(), "The Cheetah template engine doesn't work on PyPy")
+    def test_cheetah_template_engine(self):
+        template = self.shift.new('cheetah.cheetah')
+        self.assert_true(template is not None)
+
+        rendered = template.render({'name': 'Andrew'})
+
+        expected_path = os.path.join(file_path, 'cheetah.cheetah.out')
+        with open(expected_path, 'rb') as f:
+            expected = f.read()
+
+        self.assert_equal(rendered, expected)
+
+
 def suite():
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(TestTemplates))
+    suite.addTest(unittest.makeSuite(TestSpecificEngines))
 
     return suite
 
