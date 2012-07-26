@@ -40,3 +40,10 @@ template_file: django_basic.django
 output_file: django_basic.django.out
 params:
     name: Andrew
+---
+engine_name: pystache
+test_name: pystache_basic
+template_file: pystache_basic.mustache
+output_file: pystache_basic.mustache.out
+params:
+    name: Andrew
