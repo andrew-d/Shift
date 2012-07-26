@@ -41,6 +41,11 @@ class TestTemplates(BaseTestCase):
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
+        # Deal with newline funkiness.
+        expected = expected.replace("\r\n", "\n")
+        rendered = rendered.replace("\r\n", "\n")
+
+        # Assert they match
         self.assert_equal(rendered, expected)
 
         # We also test that this test will fail as expected.
@@ -50,6 +55,12 @@ class TestTemplates(BaseTestCase):
 class TestSpecificEngines(BaseTestCase):
     def setup(self):
         self.shift = shift.Shift(template_root=file_path)
+
+    def clean_newlines(self, expected, rendered):
+        expected = expected.replace("\r\n", "\n")
+        rendered = rendered.replace("\r\n", "\n")
+
+        return expected, rendered
 
     @skip_if(is_pypy(), "The Cheetah template engine doesn't work on PyPy")
     def test_cheetah_template_engine(self):
@@ -62,6 +73,8 @@ class TestSpecificEngines(BaseTestCase):
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
+        # Deal with newline funkiness.
+        expected, rendered = self.clean_newlines(expected, rendered)
         self.assert_equal(rendered, expected)
 
 
