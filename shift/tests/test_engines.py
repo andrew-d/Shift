@@ -31,7 +31,11 @@ class TestTemplates(BaseTestCase):
         template = self.shift.new(details['template_file'])
         self.assert_true(template is not None)
 
-        rendered = template.render(details['params'])
+        if 'params' in details:
+            params = details['params']
+        else:
+            params = {}
+        rendered = template.render(params)
 
         expected_path = os.path.join(file_path, details['output_file'])
         with open(expected_path, 'rb') as f:
