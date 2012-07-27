@@ -6,7 +6,7 @@ class CreoleTemplate(BaseTemplate):
         self.string = template
 
     def render(self, context=None):
-        return self.renderer(self.string)
+        return self.renderer(unicode(self.string))
 
     @classmethod
     def on_initialize(klass):

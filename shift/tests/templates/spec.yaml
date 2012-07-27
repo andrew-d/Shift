@@ -45,3 +45,8 @@ engine_name: restructuredtext
 test_name: restructuredtext
 template_file: restructured.rst
 output_file: restructured.rst.out
+---
+engine_name: creole
+test_name: creole
+template_file: creole.creole
+output_file: creole.creole.out
