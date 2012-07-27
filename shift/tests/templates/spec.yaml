@@ -50,3 +50,22 @@ engine_name: creole
 test_name: creole
 template_file: creole.creole
 output_file: creole.creole.out
+---
+engine_name: textile
+test_name: textile
+template_file: textile.textile
+output_file: textile.textile.out
+---
+engine_name: genshi
+test_name: genshi_xml
+template_file: genshi.markup.genshi
+output_file: genshi.markup.genshi.out
+params:
+    name: Andrew
+---
+engine_name: genshi
+test_name: genshi_text
+template_file: genshi.text.genshi
+output_file: genshi.text.genshi.out
+params:
+    name: Andrew

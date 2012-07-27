@@ -15,6 +15,6 @@ class TextileTemplate(BaseTemplate):
         except ImportError:
             return False
 
-        klass.renderer = textile.textile
+        klass.renderer = staticmethod(textile.textile)
         return True
 

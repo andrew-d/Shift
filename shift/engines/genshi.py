@@ -12,7 +12,7 @@ class GenshiMarkupTemplate(BaseTemplate):
 
     def render(self, context=None):
         ctx = context or {}
-        return self.renderer.generate(**ctx)
+        return str(self.renderer.generate(**ctx))
 
     @classmethod
     def on_initialize(klass):
@@ -29,11 +29,11 @@ class GenshiMarkupTemplate(BaseTemplate):
 
 class GenshiTextTemplate(BaseTemplate):
     def load_string(self, template):
-        self.renderer = klass.Template(template)
+        self.renderer = self.Template(template)
 
     def render(self, context=None):
         ctx = context or {}
-        return self.renderer.generate(**ctx)
+        return str(self.renderer.generate(**ctx))
 
     @classmethod
     def on_initialize(klass):
