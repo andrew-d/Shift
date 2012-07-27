@@ -74,3 +74,8 @@ engine_name: scss
 test_name: scss
 template_file: scss.scss
 output_file: scss.scss.out
+---
+engine_name: lesscss
+test_name: lesscss
+template_file: lesscss.less
+output_file: lesscss.less.out
