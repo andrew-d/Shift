@@ -69,3 +69,8 @@ template_file: genshi.text.genshi
 output_file: genshi.text.genshi.out
 params:
     name: Andrew
+---
+engine_name: scss
+test_name: scss
+template_file: scss.scss
+output_file: scss.scss.out
