@@ -17,6 +17,11 @@ with open(test_spec, 'rb') as f:
 def generate_name(idx, param):
     return 'test_with_' + param['test_name']
 
+def strip_trailing(s):
+    if s.endswith("\n"):
+        s = s[0:-1]
+    return s
+
 @parametrize
 class TestTemplates(BaseTestCase):
     def setup(self):
@@ -42,8 +47,8 @@ class TestTemplates(BaseTestCase):
             expected = f.read()
 
         # Deal with newline funkiness.
-        expected = expected.replace("\r\n", "\n")
-        rendered = rendered.replace("\r\n", "\n")
+        expected = strip_trailing(expected.replace("\r\n", "\n"))
+        rendered = strip_trailing(rendered.replace("\r\n", "\n"))
 
         # Assert they match
         self.assert_equal(rendered, expected)
@@ -57,8 +62,8 @@ class TestSpecificEngines(BaseTestCase):
         self.shift = shift.Shift(template_root=file_path)
 
     def clean_newlines(self, expected, rendered):
-        expected = expected.replace("\r\n", "\n")
-        rendered = rendered.replace("\r\n", "\n")
+        expected = strip_trailing(expected.replace("\r\n", "\n"))
+        rendered = strip_trailing(rendered.replace("\r\n", "\n"))
 
         return expected, rendered
 
