@@ -117,7 +117,7 @@ class BaseTemplate(object):
             contents = f.read()
 
             # If we're on Python 3, we convert to a string.
-            if sys.version_info.major >= 3:
+            if sys.version_info[0] >= 3:
                 contents = str(contents, "utf-8")
 
             return self.load_string(contents, *args, **kwargs)

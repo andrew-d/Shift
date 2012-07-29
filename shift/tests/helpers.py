@@ -143,7 +143,7 @@ def parameters(params_list, name_func=None):
     associated methods with parametrized versions.
     """
     def internal_decorator(func):
-        if sys.version_info.major >= 3:
+        if sys.version_info[0] >= 3:
             func.__dict__['params'] = params_list
             func.__dict__['name_func'] = name_func
         else:
@@ -162,7 +162,7 @@ class ParametrizingMetaclass(type):
             if not isinstance(attr, types.FunctionType):
                 continue
 
-            if sys.version_info.major >= 3:
+            if sys.version_info[0] >= 3:
                 func_dict = attr.__dict__
             else:
                 func_dict = attr.func_dict
@@ -205,7 +205,7 @@ class ParametrizingMetaclass(type):
                     # might clobber that.
                     new_method.__name__ = new_name
 
-                    if sys.version_info.major >= 3:
+                    if sys.version_info[0] >= 3:
                         new_dict = new_method.__dict__
                     else:
                         new_dict = new_method.func_dict

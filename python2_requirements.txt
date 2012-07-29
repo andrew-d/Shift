@@ -1,0 +1,8 @@
+# These requirements are only for Python 2.x, since the corresponding template
+# engine doesn't support Python 3 yet.
+Chameleon               # Chameleon (http://chameleon.repoze.org/)
+Cheetah                 # Cheetah (http://www.cheetahtemplate.org/)
+django                  # Django (https://www.djangoproject.com/)
+Genshi                  # Genshi (http://genshi.edgewall.org/)
+-e git://github.com/metalshark/lesscss-python.git#egg=lesscss-python # LessCSS
+pyScss                  # Sass/SCSS (https://github.com/Kronuz/pyScss/)

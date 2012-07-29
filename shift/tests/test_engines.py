@@ -48,7 +48,7 @@ class TestTemplates(BaseTestCase):
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
-        if sys.version_info.major >= 3:
+        if sys.version_info[0] >= 3:
             expected = str(expected, 'utf-8')
 
         # Deal with newline funkiness.
@@ -100,7 +100,7 @@ class TestSpecificEngines(BaseTestCase):
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
-        if sys.version_info.major >= 3:
+        if sys.version_info[0] >= 3:
             expected = str(expected, 'utf-8')
 
         expected, rendered = self.clean_newlines(expected, rendered)

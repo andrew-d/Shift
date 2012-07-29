@@ -5,7 +5,7 @@ import sys
 class CreoleTemplate(BaseTemplate):
     def load_string(self, template):
         self.string = template
-        if sys.version_info.major < 3:
+        if sys.version_info[0] < 3:
             self.string = unicode(self.string)
 
     def render(self, context=None):
