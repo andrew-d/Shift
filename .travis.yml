@@ -10,8 +10,8 @@ python:
 
 install:
   - sudo pip install -r requirements.txt --use-mirrors
-  - if [ "$TRAVIS_PYTHON_VERSION" == "2.6"  ]; then sudo pip install -r python2_requirements.txt --use-mirrors
-  - if [ "$TRAVIS_PYTHON_VERSION" == "2.7"  ]; then sudo pip install -r python2_requirements.txt --use-mirrors
+  - if [ "$TRAVIS_PYTHON_VERSION" == "2.6"  ]; then sudo pip install -r python2_requirements.txt --use-mirrors; fi
+  - if [ "$TRAVIS_PYTHON_VERSION" == "2.7"  ]; then sudo pip install -r python2_requirements.txt --use-mirrors; fi
   - if [ "$TRAVIS_PYTHON_VERSION" != "pypy" ]; then sudo pip install -r cpython_requirements.txt --use-mirrors; fi
 
 script: python setup.py test
