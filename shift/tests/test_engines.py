@@ -77,6 +77,19 @@ class TestSpecificEngines(BaseTestCase):
         expected, rendered = self.clean_newlines(expected, rendered)
         self.assert_equal(rendered, expected)
 
+    @skip_if(is_pypy(), "The misaka template engine doesn't work on PyPy")
+    def test_misaka_templte_engine(self):
+        path = os.path.join(file_path, "markdown.md")
+        expected_path = os.path.join(file_path, "markdown.md.out")
+        template = shift.engines.MarkdownMisakaTemplate(template_path=path)
+        rendered = template.render()
+
+        with open(expected_path, 'rb') as f:
+            expected = f.read()
+
+        expected, rendered = self.clean_newlines(expected, rendered)
+        self.assert_equal(rendered, expected)
+
 
 def suite():
     suite = unittest.TestSuite()

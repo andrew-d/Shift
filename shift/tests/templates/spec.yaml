@@ -79,3 +79,8 @@ engine_name: lesscss
 test_name: lesscss
 template_file: lesscss.less
 output_file: lesscss.less.out
+---
+engine_name: markdown
+test_name: markdown
+template_file: markdown.md
+output_file: markdown.md.out
