@@ -2,6 +2,7 @@ from __future__ import with_statement
 
 import os
 import re
+import sys
 import abc
 from collections import defaultdict
 from copy import copy
@@ -113,7 +114,13 @@ class BaseTemplate(object):
             path = file_path
 
         with open(path, 'rb') as f:
-            return self.load_string(f.read(), *args, **kwargs)
+            contents = f.read()
+
+            # If we're on Python 3, we convert to a string.
+            if sys.version_info.major >= 3:
+                contents = str(contents, "utf-8")
+
+            return self.load_string(contents, *args, **kwargs)
 
     def render(self, context=None, *args, **kwargs):
         """

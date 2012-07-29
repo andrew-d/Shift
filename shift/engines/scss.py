@@ -1,7 +1,10 @@
 from __future__ import absolute_import
 from ..base import Shift, BaseTemplate
 import sys
-import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 class ScssTemplate(BaseTemplate):
     def load_string(self, template):
@@ -17,7 +20,7 @@ class ScssTemplate(BaseTemplate):
         old_err = sys.stderr
 
         try:
-            sys.stderr = StringIO.StringIO()
+            sys.stderr = StringIO()
             try:
                 import scss
             except ImportError:

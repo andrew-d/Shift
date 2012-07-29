@@ -84,7 +84,7 @@ class _ExceptionCatcher(object):
         if exc_type is None:
             self.test_case.fail('Expected exception of type %r' % exception_name)
         elif not issubclass(exc_type, self.exc_type):
-            raise exc_type, exc_value, tb
+            raise exc_type(exc_value)
         return True
 
 
@@ -143,8 +143,12 @@ def parameters(params_list, name_func=None):
     associated methods with parametrized versions.
     """
     def internal_decorator(func):
-        func.func_dict['params'] = params_list
-        func.func_dict['name_func'] = name_func
+        if sys.version_info.major >= 3:
+            func.__dict__['params'] = params_list
+            func.__dict__['name_func'] = name_func
+        else:
+            func.func_dict['params'] = params_list
+            func.func_dict['name_func'] = name_func
         return func
 
     return internal_decorator
@@ -158,15 +162,20 @@ class ParametrizingMetaclass(type):
             if not isinstance(attr, types.FunctionType):
                 continue
 
+            if sys.version_info.major >= 3:
+                func_dict = attr.__dict__
+            else:
+                func_dict = attr.func_dict
+
             # If the function doesn't have a 'params' attribute,
             # we ignore it.
-            if 'params' not in attr.func_dict:
+            if 'params' not in func_dict:
                 continue
             else:
-                params = attr.func_dict['params']
+                params = func_dict['params']
 
             # Either use the name function...
-            name_func = attr.func_dict['name_func']
+            name_func = func_dict['name_func']
 
             # ... or default to one that just returns the function name plus
             # the number of the parameter.
@@ -196,10 +205,15 @@ class ParametrizingMetaclass(type):
                     # might clobber that.
                     new_method.__name__ = new_name
 
+                    if sys.version_info.major >= 3:
+                        new_dict = new_method.__dict__
+                    else:
+                        new_dict = new_method.func_dict
+
                     # Also, we remove the two attributes we've added from the
                     # function's dict (but don't error if they're not there).
-                    new_method.func_dict.pop("params", None)
-                    new_method.func_dict.pop("name_func", None)
+                    new_dict.pop("params", None)
+                    new_dict.pop("name_func", None)
                     return new_method
 
                 # We create our parametrized method, and then assign it to our
