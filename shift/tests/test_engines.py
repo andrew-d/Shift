@@ -1,14 +1,12 @@
 from __future__ import print_function
 from . import BaseTestCase, parameters, parametrize, shift
-from .helpers import skip_if
+from .helpers import skip_if, is_pypy, is_python3
 import os
 import sys
 from glob import glob
 import unittest
 import yaml
 
-def is_pypy():
-    return hasattr(sys, 'pypy_version_info')
 
 file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
 test_spec = os.path.join(file_path, "spec.yaml")
@@ -48,7 +46,7 @@ class TestTemplates(BaseTestCase):
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
-        if sys.version_info[0] >= 3:
+        if is_python3():
             expected = str(expected, 'utf-8')
 
         # Deal with newline funkiness.
@@ -100,7 +98,7 @@ class TestSpecificEngines(BaseTestCase):
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
-        if sys.version_info[0] >= 3:
+        if is_python3():
             expected = str(expected, 'utf-8')
 
         expected, rendered = self.clean_newlines(expected, rendered)
