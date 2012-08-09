@@ -3,14 +3,14 @@
 from setuptools import setup
 
 setup(name='Shift',
-      version='0.0.3',
+      version='0.0.4',
       description='A generic template library for Python',
       author='Andrew Dunham',
       url='http://github.com/andrew-d/Shift',
       license='Apache',
       platforms='any',
       zip_safe=False,
-      packages=['shift'],
+      packages=['shift', 'shift.engines'],
       classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
