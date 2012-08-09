@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='Shift',
-      version='0.0.2',
+      version='0.0.3',
       description='A generic template library for Python',
       author='Andrew Dunham',
       url='http://github.com/andrew-d/Shift',

@@ -1,86 +1,86 @@
 ---
 engine_name: jinja2
 test_name: jinja2_basic
-template_file: jinja2_basic.j2
-output_file: jinja2_basic.j2.out
+template_file: test_jinja2_basic.j2
+output_file: test_jinja2_basic.j2.out
 params:
     name: Andrew
 ---
 engine_name: mako
 test_name: mako_basic
-template_file: mako_basic.mako
-output_file: mako_basic.mako.out
+template_file: test_mako_basic.mako
+output_file: test_mako_basic.mako.out
 params:
     name: Andrew
 ---
 engine_name: pystache
 test_name: pystache_basic
-template_file: pystache.mustache
-output_file: pystache.mustache.out
+template_file: test_pystache.mustache
+output_file: test_pystache.mustache.out
 params:
     name: Andrew
 ---
 engine_name: chameleon
 test_name: chameleon_basic
-template_file: chameleon.chameleon
-output_file: chameleon.chameleon.out
+template_file: test_chameleon.chameleon
+output_file: test_chameleon.chameleon.out
 params:
     name: Andrew
 ---
 engine_name: jinja2
 test_name: jinja2_inheritance
-template_file: jinja2_child.j2
-output_file: jinja2_inheritance.out
+template_file: test_jinja2_child.j2
+output_file: test_jinja2_inheritance.out
 params:
     name: Andrew
 ---
 engine_name: django
 test_name: django_basic
-template_file: django_basic.django
-output_file: django_basic.django.out
+template_file: test_django_basic.django
+output_file: test_django_basic.django.out
 params:
     name: Andrew
 ---
 engine_name: restructuredtext
 test_name: restructuredtext
-template_file: restructured.rst
-output_file: restructured.rst.out
+template_file: test_restructured.rst
+output_file: test_restructured.rst.out
 ---
 engine_name: creole
 test_name: creole
-template_file: creole.creole
-output_file: creole.creole.out
+template_file: test_creole.creole
+output_file: test_creole.creole.out
 ---
 engine_name: textile
 test_name: textile
-template_file: textile.textile
-output_file: textile.textile.out
+template_file: test_textile.textile
+output_file: test_textile.textile.out
 ---
 engine_name: genshi
 test_name: genshi_xml
-template_file: genshi.markup.genshi
-output_file: genshi.markup.genshi.out
+template_file: test_genshi.markup.genshi
+output_file: test_genshi.markup.genshi.out
 params:
     name: Andrew
 ---
 engine_name: genshi
 test_name: genshi_text
-template_file: genshi.text.genshi
-output_file: genshi.text.genshi.out
+template_file: test_genshi.text.genshi
+output_file: test_genshi.text.genshi.out
 params:
     name: Andrew
 ---
 engine_name: scss
 test_name: scss
-template_file: scss.scss
-output_file: scss.scss.out
+template_file: test_scss.scss
+output_file: test_scss.scss.out
 ---
 engine_name: lesscss
 test_name: lesscss
-template_file: lesscss.less
-output_file: lesscss.less.out
+template_file: test_lesscss.less
+output_file: test_lesscss.less.out
 ---
 engine_name: markdown
 test_name: markdown
-template_file: markdown.md
-output_file: markdown.md.out
+template_file: test_markdown.md
+output_file: test_markdown.md.out

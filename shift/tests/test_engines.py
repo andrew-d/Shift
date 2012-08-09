@@ -75,10 +75,10 @@ class TestSpecificEngines(BaseTestCase):
         if not shift.engines.CheetahTemplate.initialized:
             return
 
-        template = self.shift.new('cheetah.cheetah')
+        template = self.shift.new('test_cheetah.cheetah')
         rendered = template.render({'name': 'Andrew'})
 
-        expected_path = os.path.join(file_path, 'cheetah.cheetah.out')
+        expected_path = os.path.join(file_path, 'test_cheetah.cheetah.out')
         with open(expected_path, 'rb') as f:
             expected = f.read()
 
@@ -90,8 +90,8 @@ class TestSpecificEngines(BaseTestCase):
     def test_misaka_template_engine(self):
         if not shift.engines.MarkdownMisakaTemplate.initialized:
             return
-        path = os.path.join(file_path, "markdown.md")
-        expected_path = os.path.join(file_path, "markdown.md.out")
+        path = os.path.join(file_path, "test_markdown.md")
+        expected_path = os.path.join(file_path, "test_markdown.md.out")
         template = shift.engines.MarkdownMisakaTemplate(template_path=path)
         rendered = template.render()
 
