@@ -10,7 +10,7 @@ setup(name='Shift',
       license='Apache',
       platforms='any',
       zip_safe=False,
-      packages=['shift', 'shift.engines'],
+      packages=['shift', 'shift.engines', 'shift.tests'],
       classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
