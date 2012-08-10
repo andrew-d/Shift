@@ -15,18 +15,23 @@ class Shift(object):
     """
     mappings = defaultdict(list)
 
-    def __init__(self, template_root="views"):
+    def __init__(self, template_root=None):
+        template_root = template_root or "views"
         self.mappings = copy(Shift.mappings)
         self.template_root = os.path.abspath(template_root)
 
-    def new(self, template_path):
+    def new(self, template_path, **kwargs):
+        # Remove any "template_string" arguments from the kwargs - new() is always for files.
+        kwargs.pop("template_string", None)
+
+        # For each engine...
         for engine in self._engines_iterator(template_path):
             if engine.initialized:
                 # We try to instantiate this renderer.  If an error is raised, we
                 # catch it and try the next engine.
                 # TODO: is it really a smart idea to try and catch ALL exceptions
                 # here?  Perhaps not.
-                renderer = engine(template_path=template_path, root_dir=self.template_root)
+                renderer = engine(template_path=template_path, root_dir=self.template_root, **kwargs)
                 return renderer
             else:
                 # print "Engine {0} isn't initialized.".format(engine)
@@ -79,7 +84,7 @@ class BaseTemplate(object):
     initialized = False
     _initialize_called = False
 
-    def __init__(self, template_path=None, template_string=None, root_dir=None):
+    def __init__(self, template_path=None, template_string=None, root_dir=None, **kwargs):
         """
         Initialize the template, either with a string or a file.  If both are
         given, an assertion failure will be raised.
@@ -89,9 +94,9 @@ class BaseTemplate(object):
         """
         assert (template_path is None) or (template_string is None)
         if template_string is not None:
-            self.load_string(template_string)
+            self.load_string(template_string, **kwargs)
         elif template_path is not None:
-            self.load_file(template_path, root_dir=root_dir)
+            self.load_file(template_path, root_dir=root_dir, **kwargs)
         else:
             raise Exception("You must provide either a template string or a file!")
 
