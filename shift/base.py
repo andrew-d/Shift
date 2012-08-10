@@ -33,8 +33,7 @@ class Shift(object):
                 # here?  Perhaps not.
                 renderer = engine(template_path=template_path, root_dir=self.template_root, **kwargs)
                 return renderer
-            else:
-                # print "Engine {0} isn't initialized.".format(engine)
+            else:               # pragma: no cover
                 pass
 
         # Return None if we haven't found a match by now.
