@@ -11,10 +11,19 @@ class MarkdownTemplate(BaseTemplate):
     @classmethod
     def on_initialize(klass):
         try:
-            import markdown
+            import markdown2
+            klass.renderer = staticmethod(markdown2.markdown)
+            return True
         except ImportError:
-            return False
+            pass
 
-        klass.renderer = staticmethod(markdown.markdown)
-        return True
+        try:
+            import markdown
+            klass.renderer = staticmethod(markdown.markdown)
+            return True
+        except ImportError:
+            pass
+
+        return False
+
 
